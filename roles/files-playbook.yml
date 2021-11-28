@@ -1,0 +1,61 @@
+---
+  - name: Installing and Launch Filebeat and Metricbeat
+    hosts: webservers
+    become: yes
+    tasks:
+    # Use command module
+    - name: Download filebeat .deb file
+      command: curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.4.0-amd64.deb 
+    # use command module
+    - name: Insall Filebeat .deb
+      command: dpkg -i filebeat-7.4.0-amd64.deb
+    # use copy module
+    - name: Drop in filebeat.yml
+      copy:
+        src: /etc/ansible/files/filebeat-config.yml
+        dest: /etc/filebeat/filebeat.yml
+    # use command module
+    - name: Enable and Configure System Module
+      command: filebeat modules enable system
+    # use command module
+    - name: Setup Filebeat
+      command: filebeat setup
+    # use command modules
+    - name: Start filebeat service
+      command: service filebeat start
+    #Filebeat on boot
+    - name: enable filebeat on boot
+      systemd:
+             name: filebeat.service
+             enabled: yes
+
+        ##########################
+        #install metric beat      
+     # Use command module to download metricbeat
+    - name: Download metricbeat .deb file
+      command: curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.4.0-amd64.deb
+      # Use command module to install metricbeat
+    - name: Insall metricbeat .deb
+      command: dpkg -i metricbeat-7.4.0-amd64.deb
+      # use copy module
+    - name: Drop in metricbeat.yml
+      copy:
+          src: /etc/ansible/files/metricbeat-config.yml
+          dest: /etc/metricbeat/metricbeat.yml
+      # Use command module
+    - name: Enable and Configure Docker Module for Metric Beat
+      command: metricbeat modules enable docker
+      # Use command module
+    - name: Setup Metric Beat
+      command: metricbeat setup
+      # Use command module
+      #- name: Metric -e
+      #command: metricbeat -e
+      # 
+    - name: Start Metric Beat
+      command: service metricbeat start
+      # Metricbeat on boot
+    - name: enable metrricbeat on boot
+      systemd:
+              name: metricbeat.service
+              enabled: yes
