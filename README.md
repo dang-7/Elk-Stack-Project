@@ -46,16 +46,17 @@ The machines on the internal network are not exposed to the public Internet.
 Only the Jump Box Provisioner machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
 - 73.234.113.193
 
-Machines within the network can only be accessed by _____.
-- _TODO: Which machine did you allow to access your ELK VM? What was its IP address?_
+Machines within the network can only be accessed by the Jump Box or other machines within the network.
+- Which machine did you allow to access your ELK VM? What was its IP address? Using a peering link, any vm within the GreenTeamNet Network can access the elk vm.  The subnets for GreenTeamNet are 10.3.0.0/24.
 
 A summary of the access policies in place can be found in the table below.
 
 | Name     | Publicly Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
-| Jump Box | Yes/No              | 10.0.0.1 10.0.0.2    |
-|          |                     |                      |
-|          |                     |                      |
+| Jump Box | Yes                 |  73.234.113.193      |
+| Web1     | No                  |  10.3.0.0/24         |
+| Web2     | No                  |  10.3.0.0/24         |
+| Elk Stack| No                  |  10.3.0.0/24 & 10.2.0.0/16        |
 
 ### Elk Configuration
 
