@@ -82,7 +82,6 @@ We have installed the following Beats on these machines:
 - Metricbeat
 
 These Beats allow us to collect the following information from each machine:
-- _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
 - Filebeat tails and ships log data.  You could expect to see [something like this](diagrams/logEx.png) from filebeat.  Metricbeat monitors system services that are running such as Apache.  An other example of metricbeat would be collecting [CPU usage data.](diagrams/metricCPU.png)
 
 ### Using the Playbook
