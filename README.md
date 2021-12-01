@@ -91,4 +91,4 @@ These Beats allow us to collect the following information from each machine:
 - http://13.89.36.183:5601/app/kibana
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
-- ansible-playbook filebeat.yml
+- ansible-playbook files-playbook.yml
