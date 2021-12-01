@@ -85,16 +85,10 @@ These Beats allow us to collect the following information from each machine:
 - Filebeat tails and ships log data.  You could expect to see [something like this](diagrams/logEx.png) from filebeat.  Metricbeat monitors system services that are running such as Apache.  An other example of metricbeat would be collecting [CPU usage data.](diagrams/metricCPU.png)
 
 ### Using the Playbook
-In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
-SSH into the control node and follow the steps below:
-- Copy the _____ file to _____.
-- Update the _____ file to include...
-- Run the playbook, and navigate to ____ to check that the installation worked as expected.
-
-_TODO: Answer the following questions to fill in the blanks:_
-- _Which file is the playbook? Where do you copy it?_
-- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
-- _Which URL do you navigate to in order to check that the ELK server is running?
+- _Which file is the playbook? Where do you copy it?_  The YAML files are the playbooks which get copied to the ansible folder.
+- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_  Update the hosts file with the specific IP addresses.  The Filebeat config file is where the installation should be specified.  After you ssh into the vm you can install elk through the CLI.
+- http://13.89.36.183:5601/app/kibana
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+- ansible-playbook filebeat.yml
